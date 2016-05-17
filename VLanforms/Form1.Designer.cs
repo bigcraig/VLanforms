@@ -32,6 +32,8 @@
             this.usernameControl = new System.Windows.Forms.TextBox();
             this.passwordControl = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // configureModem
@@ -49,6 +51,7 @@
             this.usernameControl.Name = "usernameControl";
             this.usernameControl.Size = new System.Drawing.Size(109, 20);
             this.usernameControl.TabIndex = 1;
+            this.usernameControl.Text = "username@domain";
             this.usernameControl.TextChanged += new System.EventHandler(this.usernameControl_TextChanged);
             // 
             // passwordControl
@@ -57,6 +60,7 @@
             this.passwordControl.Name = "passwordControl";
             this.passwordControl.Size = new System.Drawing.Size(109, 20);
             this.passwordControl.TabIndex = 2;
+            this.passwordControl.Text = "Password";
             this.passwordControl.TextChanged += new System.EventHandler(this.passwordControl_TextChanged);
             // 
             // label1
@@ -69,11 +73,31 @@
             this.label1.Text = "This utility will configure VDSL with VLAN 100";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(58, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "PPP Username";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(58, 237);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "PPP password";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 456);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.passwordControl);
             this.Controls.Add(this.usernameControl);
@@ -92,6 +116,8 @@
         private System.Windows.Forms.TextBox usernameControl;
         private System.Windows.Forms.TextBox passwordControl;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

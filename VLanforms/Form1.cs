@@ -30,20 +30,49 @@ namespace VLanforms
 
         }
 
-        static void vlanConfiguration(string PPPusername, string PPPpassword)
+        static string ACSConfigString(string sessionKey)
+        /* string Tr69cAcsPwd,
+         string tr69cConnReqUser,
+         string tr69cConnReqPwd,
+         string tr69cConnReqPort,
+         string tr69cAcsUrl,
+         string informInterval) */
         {
+            string _acspost;
+            _acspost = "tr69cfg.cgi?tr69cEnable=1&tr69cInformEnable=1&tr69cInformInterval=86423&tr69cAcsURL=http://acs.netcommwireless.com/cpe.php&tr69cAcsUser=cpe&tr69cAcsPwd=cpe&tr69cConnReqUser=cpe&tr69cConnReqPwd=cpe&tr69cConnReqPort=30005&tr69cNoneConnReqAuth=0&tr69cDebugEnable=0&tr69cBoundIfName=Any_WAN&sessionKey=";
+            _acspost = _acspost + sessionKey;
+            // Console.Write(_acspost);
+            return (_acspost);
+        }
 
-            string _PPPusername = PPPusername;
+        void vlanConfiguration(string PPPusername, string PPPpassword)
+        {
+            configureModem.Text = "Configring Vlan";
+            string _PPPusername= PPPusername;
             string _PPPpassword = PPPpassword;
             var modem = new Browser();
+            Browser.RefererModes ModemBrowserMode;
+            // add referrer for NF4V"
+            ModemBrowserMode = Browser.RefererModes.OriginWhenCrossOrigin;
+            // add referrer for NF4V"
 
-            var modemURL = "http://192.168.20.1/qinetsetup.html";
+
+            modem.RefererMode = ModemBrowserMode;
+            var modemURL = "http://192.168.20.1/";
+         
             modem.Navigate(modemURL);
+
             //    Console.Write("get url");
             //    modem.BasicAuthenticationLogin("Broadband Router","admin","admin");
             modem.BasicAuthenticationLogin("192.168.20.1", "admin", "admin");
+        
+            modemURL = "http://192.168.20.1";
+         //   modem.SetHeader("Referejkjjr:http://192.168.20.1/");
+            modem.Navigate(modemURL);
 
-
+            modemURL = "http://192.168.20.1/qinetsetup.html";
+           
+           
             modem.Navigate(modemURL);
             //     Console.Write(modem.CurrentHtml);
             var html = modem.CurrentHtml;
@@ -61,7 +90,22 @@ namespace VLanforms
                 + _PPPusername + "&pppPassword="
                 + _PPPpassword +"&portId=0&ptmPriorityNorm=1&ptmPriorityHigh=1&connMode=1&burstsize=3000&enblQos=1&grpPrec=8&grpAlg=WRR&grpWght=1&prec=8&alg=WRR&wght=1&sessionKey=" + sessionKey;
             modem.Navigate(modemURL);
+            configureModem.Text = "Configuring ACS";
+            configureACS(modem);
 
+        }
+
+
+        static void configureACS(Browser modem)
+        {
+            var modemURL = "http://192.168.20.1/tr69cfg.html";
+            modem.Navigate(modemURL);
+            var html = modem.CurrentHtml;
+            string sessionKey = getSessionID(html);
+
+            var getstringACS = ACSConfigString(sessionKey);
+            modemURL = modemURL + getstringACS;
+            modem.Navigate(modemURL);
 
         }
         private void button1_Click(object sender, EventArgs e)
@@ -74,6 +118,7 @@ namespace VLanforms
         private void usernameControl_TextChanged(object sender, EventArgs e)
         {
             PPPusername = usernameControl.Text;
+            configureModem.Text = "Click to Configure Modem";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -89,7 +134,7 @@ namespace VLanforms
         private void passwordControl_TextChanged(object sender, EventArgs e)
         {
             PPPpassword = passwordControl.Text;
-
+            configureModem.Text = "Click to Configure Modem";
         }
     }
 }
