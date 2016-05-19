@@ -30,6 +30,19 @@ namespace VLanforms
 
         }
 
+         bool checkDSLError(string html)
+        {      // static since we dont need to instance another program class to run it
+
+            string _pattern = "DSL Interface Configuration Error";
+            Match match = Regex.Match(html, _pattern);
+                
+            if(match.Success)
+                configureModem.Text = "Configuration Failed , please check modem has been reset";
+
+            return match.Success;
+
+        }
+
         static string ACSConfigString(string sessionKey)
         /* string Tr69cAcsPwd,
          string tr69cConnReqUser,
@@ -44,10 +57,12 @@ namespace VLanforms
             // Console.Write(_acspost);
             return (_acspost);
         }
+      
+
 
         void vlanConfiguration(string PPPusername, string PPPpassword)
         {
-            configureModem.Text = "Configring Vlan";
+            configureModem.Text = "Configuring Vlan";
             string _PPPusername= PPPusername;
             string _PPPpassword = PPPpassword;
             var modem = new Browser();
@@ -55,17 +70,25 @@ namespace VLanforms
             // add referrer for NF4V"
             ModemBrowserMode = Browser.RefererModes.OriginWhenCrossOrigin;
             // add referrer for NF4V"
-
+            
 
             modem.RefererMode = ModemBrowserMode;
             var modemURL = "http://192.168.20.1/";
-         
-            modem.Navigate(modemURL);
 
-            //    Console.Write("get url");
-            //    modem.BasicAuthenticationLogin("Broadband Router","admin","admin");
-            modem.BasicAuthenticationLogin("192.168.20.1", "admin", "admin");
-        
+            int timeOut = 3000;
+            modem.Navigate(modemURL, timeOut);
+            
+            if(modem.RequestData().ResponseCode != 401 )
+            {
+               ;
+                configureModem.Text = "modem is not online, please connect,wait and click again";
+                return;
+            }
+
+                //    Console.Write("get url");
+                //    modem.BasicAuthenticationLogin("Broadband Router","admin","admin");
+                modem.BasicAuthenticationLogin("192.168.20.1", "admin", "admin");
+       
             modemURL = "http://192.168.20.1";
          //   modem.SetHeader("Referejkjjr:http://192.168.20.1/");
             modem.Navigate(modemURL);
@@ -80,30 +103,41 @@ namespace VLanforms
             // post wlan type
             modemURL = "http://192.168.20.1/qvdslwanmode.cgi?wanType=2&sessionKey=" + sessionKey;
             modem.Navigate(modemURL);
+           // if (LastRequestFailed(modem)) { return; } 
             html = modem.CurrentHtml;
             sessionKey = getSessionID(html);
-            modemURL = "http://192.168.20.1/qvdslppp.cgi?ntwkPrtcl=0&enblOnDemand=0&pppTimeOut=0&enblv4=1&useStaticIpAddress=0&pppIpExtension=0&enblFirewall=1&enblNat=1&enblIgmp=1&keepalive=1&keepalivetime=5&alivemaxfail=30&enVlanMux=1&vlanMuxId=69&vlanMuxPr=0&enblPppDebug=0&maxMtu=1492&keepalive=0&enblv6=0&pppAuthErrorRetry=0&pppAuthMethod=0&sessionKey=" + sessionKey;
+            modemURL = "http://192.168.20.1/qvdslppp.cgi?ntwkPrtcl=0&enblOnDemand=0&pppTimeOut=0&enblv4=1&useStaticIpAddress=0&pppIpExtension=0&enblFirewall=1&enblNat=1&enblIgmp=1&keepalive=1&keepalivetime=5&alivemaxfail=30&enVlanMux=1&vlanMuxId=100&vlanMuxPr=0&enblPppDebug=0&maxMtu=1492&keepalive=0&enblv6=0&pppAuthErrorRetry=0&pppAuthMethod=0&sessionKey=" + sessionKey;
             modem.Navigate(modemURL);
+          
             html = modem.CurrentHtml;
             sessionKey = getSessionID(html);
             modemURL = "http://192.168.20.1/qsetup.cmd?pppUserName="
                 + _PPPusername + "&pppPassword="
                 + _PPPpassword +"&portId=0&ptmPriorityNorm=1&ptmPriorityHigh=1&connMode=1&burstsize=3000&enblQos=1&grpPrec=8&grpAlg=WRR&grpWght=1&prec=8&alg=WRR&wght=1&sessionKey=" + sessionKey;
             modem.Navigate(modemURL);
+            html = modem.CurrentHtml;
+            if (checkDSLError(html)) { return; }
             configureModem.Text = "Configuring ACS";
             configureACS(modem);
-
+            configureModem.Text = "Configuration completed";
         }
 
 
-        static void configureACS(Browser modem)
+         void configureACS(Browser modem)
         {
+            configureModem.Text = "Configuring ACS";
             var modemURL = "http://192.168.20.1/tr69cfg.html";
-            modem.Navigate(modemURL);
+            int timeOut = 3000;
+            if (!modem.Navigate(modemURL, timeOut)) {
+                configureModem.Text = "modem is not connected, please connect and click again";
+                    return;
+            }
+
             var html = modem.CurrentHtml;
             string sessionKey = getSessionID(html);
 
             var getstringACS = ACSConfigString(sessionKey);
+            modemURL = "http://192.168.20.1/";
             modemURL = modemURL + getstringACS;
             modem.Navigate(modemURL);
 
@@ -112,7 +146,7 @@ namespace VLanforms
         {
             configureModem.Text = "Configuring Modem please wait";
             vlanConfiguration(PPPusername,PPPpassword);
-            configureModem.Text = "Configured!!!!!!";
+           
         }
 
         private void usernameControl_TextChanged(object sender, EventArgs e)
