@@ -15,13 +15,15 @@ namespace VLanforms
     public partial class Form1 : Form
     {
         string PPPusername, PPPpassword;
+        Form2  f2 = new Form2();
 
         public Form1()
         {
             InitializeComponent();
+         
         }
 
-       static string getSessionID(string html)
+        static string getSessionID(string html)
         {      // static since we dont need to instance another program class to run it
 
             string _pattern = @"var sessionKey='([^']+)';";
@@ -163,6 +165,14 @@ namespace VLanforms
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+          
+           if (f2 ==null|| f2.IsDisposed)
+            f2 = new Form2();  
+            f2.Show();
         }
 
         private void passwordControl_TextChanged(object sender, EventArgs e)

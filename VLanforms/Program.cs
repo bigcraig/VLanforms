@@ -8,15 +8,20 @@ namespace VLanforms
 {
     static class Program
     {
+       
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        // static public Form2 f2;
         [STAThread]
         static void Main()
         {
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
         }
     }
 }
