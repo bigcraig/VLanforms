@@ -15,7 +15,7 @@ namespace VLanforms
     public partial class Form1 : Form
     {
         string PPPusername, PPPpassword;
-        Form2  f2 = new Form2();
+        NF5 nf5;
 
         public Form1()
         {
@@ -170,9 +170,9 @@ namespace VLanforms
         private void button1_Click_1(object sender, EventArgs e)
         {
           
-           if (f2 ==null|| f2.IsDisposed)
-            f2 = new Form2();  
-            f2.Show();
+           if (nf5 ==null|| nf5.IsDisposed)
+            nf5 = new NF5();  
+            nf5.Show();
         }
 
         private void passwordControl_TextChanged(object sender, EventArgs e)

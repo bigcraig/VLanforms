@@ -13,7 +13,7 @@ namespace VLanforms
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        // static public Form2 f2;
+        
         [STAThread]
         static void Main()
         {
