@@ -15,26 +15,26 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_7DDFBD3CD75BFE44D401998E6343AD64"
+        "OwnerKey" = "8:_FE4FED26622E4876AD543896FF103B42"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9BCFB701DAC88D4C51B61C2855C3DCA8"
         "OwnerKey" = "8:_FE4FED26622E4876AD543896FF103B42"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AF5A19828DCD1E1072743055C382EC12"
+        "MsmKey" = "8:_C357E78BC1B8A09CF02BBAAE46931BB3"
         "OwnerKey" = "8:_FE4FED26622E4876AD543896FF103B42"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AF5A19828DCD1E1072743055C382EC12"
-        "OwnerKey" = "8:_EEF22F50D95A30DD737065780FF9624D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EEF22F50D95A30DD737065780FF9624D"
-        "OwnerKey" = "8:_FE4FED26622E4876AD543896FF103B42"
+        "MsmKey" = "8:_C357E78BC1B8A09CF02BBAAE46931BB3"
+        "OwnerKey" = "8:_7DDFBD3CD75BFE44D401998E6343AD64"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,25 +46,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9BCFB701DAC88D4C51B61C2855C3DCA8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FE4FED26622E4876AD543896FF103B42"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EEF22F50D95A30DD737065780FF9624D"
+        "OwnerKey" = "8:_7DDFBD3CD75BFE44D401998E6343AD64"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AF5A19828DCD1E1072743055C382EC12"
+        "OwnerKey" = "8:_C357E78BC1B8A09CF02BBAAE46931BB3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9BCFB701DAC88D4C51B61C2855C3DCA8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -85,6 +85,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -101,6 +117,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -130,6 +162,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7DDFBD3CD75BFE44D401998E6343AD64"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SimpleBrowser, Version=0.5.79.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_7DDFBD3CD75BFE44D401998E6343AD64"
+                    {
+                    "Name" = "8:SimpleBrowser.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SimpleBrowser.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_0E0114FDFD634BD0A139089C30AF71B0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9BCFB701DAC88D4C51B61C2855C3DCA8"
             {
             "AssemblyRegister" = "3:1"
@@ -161,51 +224,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AF5A19828DCD1E1072743055C382EC12"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C357E78BC1B8A09CF02BBAAE46931BB3"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:RazorHosting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_AF5A19828DCD1E1072743055C382EC12"
+                    "_C357E78BC1B8A09CF02BBAAE46931BB3"
                     {
                     "Name" = "8:RazorHosting.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:RazorHosting.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_0E0114FDFD634BD0A139089C30AF71B0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EEF22F50D95A30DD737065780FF9624D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SimpleBrowser, Version=0.5.79.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_EEF22F50D95A30DD737065780FF9624D"
-                    {
-                    "Name" = "8:SimpleBrowser.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:SimpleBrowser.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_0E0114FDFD634BD0A139089C30AF71B0"
@@ -279,15 +311,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:vlan100Setup"
-        "ProductCode" = "8:{785DE839-DC99-44E7-B599-E156B5A9D5EE}"
-        "PackageCode" = "8:{E6261EED-3ABB-4054-812B-700141E0C43A}"
+        "ProductCode" = "8:{3539C2AF-FC01-4F66-8EEA-2819A29CD793}"
+        "PackageCode" = "8:{882F2A3A-5FBC-401D-86F5-166E6964324A}"
         "UpgradeCode" = "8:{09329DF1-2D4E-4549-80C4-F6DB807FC63E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:NetCommWireless"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
